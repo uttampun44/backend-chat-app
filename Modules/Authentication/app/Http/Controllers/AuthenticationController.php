@@ -5,6 +5,7 @@ namespace Modules\Authentication\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Authentication\app\repository\AuthenticationRepository;
+use Modules\Authentication\Http\Requests\LoginRequest;
 use Modules\Authentication\Http\Requests\SignupRequest;
 
 class AuthenticationController extends Controller
@@ -23,17 +24,47 @@ class AuthenticationController extends Controller
         return view('authentication::index');
     }
 
+    public function postLogin(LoginRequest $request)
+    {
+        try {
+            $data = $request->validated();
+            $result = $this->repository->postLogin($data);
+            return response()->json([
+                'status' => true,
+                'message' => 'Login successfully',
+                'token' => $result
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function postLogout()
+    {
+        try {
+            $result = $this->repository->postLogout();
+            return response()->json($result, 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
     public function postSignup(SignupRequest $request)
     {
         try {
-            $data = $request->validate();
+            $data = $request->validated();
             $result = $this->repository->postRegister($data);
             return response()->json([
                 'status' => true,
                 'message' => 'Data stored successfully',
                 'data' => $result
             ], 200);
-            
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
