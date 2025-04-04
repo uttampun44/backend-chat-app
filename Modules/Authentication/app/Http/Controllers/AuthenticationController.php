@@ -24,6 +24,8 @@ class AuthenticationController extends Controller
         return view('authentication::index');
     }
 
+    // login method
+    // this method is used to login the user
     public function postLogin(LoginRequest $request)
     {
         try {
@@ -42,6 +44,8 @@ class AuthenticationController extends Controller
         }
     }
 
+    // logout method
+    // this method is used to logout the user
     public function postLogout()
     {
         try {
@@ -55,6 +59,8 @@ class AuthenticationController extends Controller
         }
     }
 
+    // signup method
+    // this method is used to register the user
     public function postSignup(SignupRequest $request)
     {
         try {
@@ -73,6 +79,63 @@ class AuthenticationController extends Controller
         }
     }
 
+    // email confirmation method
+    // this method is used to confirm the email of the user
+    public function postEmailConfirmation(Request $request)
+    {
+        try {
+            $data = $request->all();
+            $result = $this->repository->postConfirmEmail($data);
+            return response()->json([
+                'status' => true,
+                'message' => 'Email confirmation successfully',
+                'data' => $result
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    // otp method
+    // this method is used to send the otp to the user
+    public function postOtp(Request $request)
+    {
+        try {
+          
+             $this->repository->postOtp($request->all());
+            return response()->json([
+                'status' => true,
+                'message' => 'OTP successfully',
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    // reset password method
+    // this method is used to reset the password of the user
+    public function postResetPassword(Request $request)
+    {
+        try {
+         
+             $this->repository->postResetPassword($request->all());
+            return response()->json([
+                'status' => true,
+                'message' => 'Password reset successfully',
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      */
