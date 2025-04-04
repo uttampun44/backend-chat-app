@@ -4,7 +4,7 @@ namespace Modules\Authentication\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Modules\Authentication\app\repository\AuthenticationRepository;
+use Modules\Authentication\app\Repository\AuthenticationRepository;
 use Modules\Authentication\Http\Requests\LoginRequest;
 use Modules\Authentication\Http\Requests\SignupRequest;
 
@@ -46,6 +46,48 @@ class AuthenticationController extends Controller
     {
         try {
             $result = $this->repository->postLogout();
+            return response()->json($result, 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function postVerfiyEmail(Request $request)
+    {
+        try {
+            $data $request->validated();
+            $result = $this->repository->postVerifyEmail($data);
+            return response()->json($result, 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function postOtpVerify(Request $request)
+    {
+        try {
+            $data = $request->validated();
+            $result = $this->repository->otpVerify($data);
+            return response()->json($result, 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function postPasswordResetRequest(Request $request)
+    {
+        try {
+            $data = $request->validated();
+            $result = $this->repository->postPasswordResetRequest($data);
             return response()->json($result, 200);
         } catch (\Throwable $th) {
             return response()->json([

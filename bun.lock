@@ -6,7 +6,9 @@
         "@tailwindcss/vite": "^4.0.0",
         "axios": "^1.8.2",
         "concurrently": "^9.0.1",
+        "laravel-echo": "^2.0.2",
         "laravel-vite-plugin": "^1.2.0",
+        "pusher-js": "^8.4.0",
         "tailwindcss": "^4.0.0",
         "vite": "^6.0.11",
       },
@@ -205,6 +207,8 @@
 
     "jiti": ["jiti@2.4.2", "", { "bin": { "jiti": "lib/jiti-cli.mjs" } }, "sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A=="],
 
+    "laravel-echo": ["laravel-echo@2.0.2", "", {}, "sha512-Ciai6hA7r35MFqNRb8G034cvm9WiveSTFQQKRGJhWtZGbng7C8BBa5QvqDxk/Mw5GeJ+q19jrEwQhf7r1b1lcg=="],
+
     "laravel-vite-plugin": ["laravel-vite-plugin@1.2.0", "", { "dependencies": { "picocolors": "^1.0.0", "vite-plugin-full-reload": "^1.1.0" }, "peerDependencies": { "vite": "^5.0.0 || ^6.0.0" }, "bin": { "clean-orphaned-assets": "bin/clean.js" } }, "sha512-R0pJ+IcTVeqEMoKz/B2Ij57QVq3sFTABiFmb06gAwFdivbOgsUtuhX6N2MGLEArajrS3U5JbberzwOe7uXHMHQ=="],
 
     "lightningcss": ["lightningcss@1.29.2", "", { "dependencies": { "detect-libc": "^2.0.3" }, "optionalDependencies": { "lightningcss-darwin-arm64": "1.29.2", "lightningcss-darwin-x64": "1.29.2", "lightningcss-freebsd-x64": "1.29.2", "lightningcss-linux-arm-gnueabihf": "1.29.2", "lightningcss-linux-arm64-gnu": "1.29.2", "lightningcss-linux-arm64-musl": "1.29.2", "lightningcss-linux-x64-gnu": "1.29.2", "lightningcss-linux-x64-musl": "1.29.2", "lightningcss-win32-arm64-msvc": "1.29.2", "lightningcss-win32-x64-msvc": "1.29.2" } }, "sha512-6b6gd/RUXKaw5keVdSEtqFVdzWnU5jMxTUjA2bVcMNPLwSQ08Sv/UodBVtETLCn7k4S1Ibxwh7k68IwLZPgKaA=="],
@@ -247,6 +251,8 @@
 
     "proxy-from-env": ["proxy-from-env@1.1.0", "", {}, "sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg=="],
 
+    "pusher-js": ["pusher-js@8.4.0", "", { "dependencies": { "tweetnacl": "^1.0.3" } }, "sha512-wp3HqIIUc1GRyu1XrP6m2dgyE9MoCsXVsWNlohj0rjSkLf+a0jLvEyVubdg58oMk7bhjBWnFClgp8jfAa6Ak4Q=="],
+
     "require-directory": ["require-directory@2.1.1", "", {}, "sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q=="],
 
     "rollup": ["rollup@4.36.0", "", { "dependencies": { "@types/estree": "1.0.6" }, "optionalDependencies": { "@rollup/rollup-android-arm-eabi": "4.36.0", "@rollup/rollup-android-arm64": "4.36.0", "@rollup/rollup-darwin-arm64": "4.36.0", "@rollup/rollup-darwin-x64": "4.36.0", "@rollup/rollup-freebsd-arm64": "4.36.0", "@rollup/rollup-freebsd-x64": "4.36.0", "@rollup/rollup-linux-arm-gnueabihf": "4.36.0", "@rollup/rollup-linux-arm-musleabihf": "4.36.0", "@rollup/rollup-linux-arm64-gnu": "4.36.0", "@rollup/rollup-linux-arm64-musl": "4.36.0", "@rollup/rollup-linux-loongarch64-gnu": "4.36.0", "@rollup/rollup-linux-powerpc64le-gnu": "4.36.0", "@rollup/rollup-linux-riscv64-gnu": "4.36.0", "@rollup/rollup-linux-s390x-gnu": "4.36.0", "@rollup/rollup-linux-x64-gnu": "4.36.0", "@rollup/rollup-linux-x64-musl": "4.36.0", "@rollup/rollup-win32-arm64-msvc": "4.36.0", "@rollup/rollup-win32-ia32-msvc": "4.36.0", "@rollup/rollup-win32-x64-msvc": "4.36.0", "fsevents": "~2.3.2" }, "bin": { "rollup": "dist/bin/rollup" } }, "sha512-zwATAXNQxUcd40zgtQG0ZafcRK4g004WtEl7kbuhTWPvf07PsfohXl39jVUvPF7jvNAIkKPQ2XrsDlWuxBd++Q=="],
@@ -270,6 +276,8 @@
     "tree-kill": ["tree-kill@1.2.2", "", { "bin": { "tree-kill": "cli.js" } }, "sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A=="],
 
     "tslib": ["tslib@2.8.1", "", {}, "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="],
+
+    "tweetnacl": ["tweetnacl@1.0.3", "", {}, "sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw=="],
 
     "vite": ["vite@6.2.2", "", { "dependencies": { "esbuild": "^0.25.0", "postcss": "^8.5.3", "rollup": "^4.30.1" }, "optionalDependencies": { "fsevents": "~2.3.3" }, "peerDependencies": { "@types/node": "^18.0.0 || ^20.0.0 || >=22.0.0", "jiti": ">=1.21.0", "less": "*", "lightningcss": "^1.21.0", "sass": "*", "sass-embedded": "*", "stylus": "*", "sugarss": "*", "terser": "^5.16.0", "tsx": "^4.8.1", "yaml": "^2.4.2" }, "optionalPeers": ["@types/node", "jiti", "less", "lightningcss", "sass", "sass-embedded", "stylus", "sugarss", "terser", "tsx", "yaml"], "bin": { "vite": "bin/vite.js" } }, "sha512-yW7PeMM+LkDzc7CgJuRLMW2Jz0FxMOsVJ8Lv3gpgW9WLcb9cTW+121UEr1hvmfR7w3SegR5ItvYyzVz1vxNJgQ=="],
 
