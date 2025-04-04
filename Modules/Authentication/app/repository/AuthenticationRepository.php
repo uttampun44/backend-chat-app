@@ -1,12 +1,11 @@
 <?php
 
-namespace Modules\Authentication\app\repository;
+namespace Modules\Authentication\app\Repository;
 
 use App\Mail\OtpMessage;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\Str;
 use Modules\Authentication\Models\UserOtp;
 use Carbon\Carbon;
