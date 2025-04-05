@@ -4,9 +4,17 @@ namespace Modules\Authentication\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Authentication\app\Repository\UserInformationRepository\UserInformationRepository;
+use Modules\Authentication\Http\Requests\UserInformationRequest;
 
 class UserInformationController extends Controller
 {
+    protected $repository;
+
+    public function __construct(UserInformationRepository $repository)
+    {
+        $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -26,7 +34,20 @@ class UserInformationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {}
+    public function store(UserInformationRequest $request)
+    {
+        try {
+            $this->repository->userInformationCreateOrUpdate($request->validated());
+            return response()->json([
+                'status' => true,
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
 
     /**
      * Show the specified resource.
