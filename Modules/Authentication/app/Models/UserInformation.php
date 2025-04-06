@@ -17,7 +17,7 @@ class UserInformation extends Model
      * The attributes that are mass assignable.
      */
     protected $table = 'user_informations';
-    protected $fillable = [];
+    protected $fillable = ['gender', 'date_of_birth', 'address', 'image', 'user_id'];
 
     // protected static function newFactory(): UserInformationFactory
     // {

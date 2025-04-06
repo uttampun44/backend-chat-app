@@ -15,7 +15,7 @@ Route::prefix('v1')->group(function () {
     Route::post("/reset-password", [AuthenticationController::class, 'postResetPassword'])->name('auth.reset-password');
   
     
-    Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware(['auth:sanctum'])->group(function () {
         Route::post("/logout", [AuthenticationController::class, 'postLogout'])->name('auth.logout');
         Route::post('/update-user-information', [UserInformationController::class, 'store'])->name('auth.update-user-information');
     });
