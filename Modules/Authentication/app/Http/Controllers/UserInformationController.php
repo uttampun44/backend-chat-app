@@ -4,7 +4,7 @@ namespace Modules\Authentication\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Modules\Authentication\app\Repository\UserInformationRepository\UserInformationRepository;
+use Modules\Authentication\app\Repository\UserInformationRepository;
 use Modules\Authentication\Http\Requests\UserInformationRequest;
 
 class UserInformationController extends Controller

@@ -1,7 +1,8 @@
 <?php
 
-namespace Modules\Authentication\app\Repository\UserInformationRepository;
+namespace Modules\Authentication\app\Repository;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Modules\Authentication\Models\UserInformation;
 
@@ -10,7 +11,7 @@ class UserInformationRepository {
     public function userInformationCreateOrUpdate(array $data)
     {
         $image_path = null;
-
+ 
         if (isset($data['image']) && $data['image'] !== null) {
             $image_path = Storage::disk('public')->put('user_information', $data['image']);
         }
@@ -21,7 +22,7 @@ class UserInformationRepository {
            'date_of_birth' => $data['date_of_birth'],
            'address' => $data['address'],
            'image' => $image_path,
-            'user_id' => $data['user_id'],
+           'user_id' => Auth::user()->id,
          ]);
 
          return $user_information;

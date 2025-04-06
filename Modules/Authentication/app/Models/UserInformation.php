@@ -2,8 +2,11 @@
 
 namespace Modules\Authentication\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 // use Modules\Authentication\Database\Factories\UserInformationFactory;
 
 class UserInformation extends Model
@@ -20,4 +23,9 @@ class UserInformation extends Model
     // {
     //     // return UserInformationFactory::new();
     // }
+
+    public function user():BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
