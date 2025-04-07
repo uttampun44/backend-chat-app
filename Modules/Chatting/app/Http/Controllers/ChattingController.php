@@ -11,7 +11,8 @@ class ChattingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public __construct(MessageRepository, $messageRepository)
+    protected $imageRepository;
+    public function __construct(MessageRepository $messageRepository)
     {
         $this->messageRepository = $messageRepository;
     }
