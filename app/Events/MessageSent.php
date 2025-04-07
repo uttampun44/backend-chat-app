@@ -29,10 +29,21 @@ class MessageSent
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */
+
+    //  only authenticate user will receive message
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('chat'),
+            new PrivateChannel('App.Models.User.' . $this->message->user_id),
+        ];
+    }
+
+    public function broadCastWith()
+    {
+        return [
+            'message' => $this->message->message,
+            'user_id' => $this->message->user_id,
+            'created_at' => $this->message->created_at,
         ];
     }
 }
