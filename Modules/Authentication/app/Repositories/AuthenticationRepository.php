@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Authentication\app\Repository;
+namespace Modules\Authentication\app\Repositories;
 
 use App\Mail\OtpMessage;
 use App\Models\User;

@@ -4,8 +4,8 @@ namespace Modules\Authentication\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Modules\Authentication\app\Repository\AuthenticationRepository;
-use Modules\Authentication\app\Repository\UserInformationRepository;
+use Modules\Authentication\app\Repositories\AuthenticationRepository;
+use Modules\Authentication\app\Repositories\UserInformationRepository;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;

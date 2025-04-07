@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Authentication\app\Repository;
+namespace Modules\Authentication\app\Repositories;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;

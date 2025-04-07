@@ -4,7 +4,7 @@ namespace Modules\Authentication\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Modules\Authentication\app\Repository\AuthenticationRepository;
+use Modules\Authentication\app\Repositories\AuthenticationRepository;
 use Modules\Authentication\Http\Requests\LoginRequest;
 use Modules\Authentication\Http\Requests\SignupRequest;
 
