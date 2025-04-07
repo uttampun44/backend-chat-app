@@ -1,0 +1,11 @@
+{
+    "name": "Chatting",
+    "alias": "chatting",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Chatting\\Providers\\ChattingServiceProvider"
+    ],
+    "files": []
+}
