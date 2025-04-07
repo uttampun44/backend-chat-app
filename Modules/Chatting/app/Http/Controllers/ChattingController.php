@@ -4,12 +4,17 @@ namespace Modules\Chatting\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Chatting\Repositories\MessageRepository;
 
 class ChattingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public __construct(MessageRepository, $messageRepository)
+    {
+        $this->messageRepository = $messageRepository;
+    }
     public function index()
     {
         return view('chatting::index');
@@ -26,7 +31,15 @@ class ChattingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {}
+    public function store(Request $request) 
+    {
+       try {
+           $this->messageRepository->postMessage($request->all());
+           return response()->json(['message' => 'Message sent successfully'], 200);
+       } catch (\Throwable $th) {
+           return response()->json(['message' => $th->getMessage()], 500);
+       }
+    }
 
     /**
      * Show the specified resource.

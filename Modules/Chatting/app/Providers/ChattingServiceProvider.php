@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use Modules\Chatting\Repositories\MessageRepository;
 
 class ChattingServiceProvider extends ServiceProvider
 {
@@ -36,6 +37,9 @@ class ChattingServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+        $this->app->bind(MessageRepository::class, function(){
+            return new MessageRepository();
+        });
     }
 
     /**
