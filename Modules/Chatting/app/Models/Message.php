@@ -17,11 +17,11 @@ class Message extends Model
      * The attributes that are mass assignable.
      */
     protected $table = 'messages';
-    protected $fillable = ['message', 'user_id'];
+    protected $fillable = ['message', 'sender_id', 'receiver_id'];
 
     public function user():BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'sender_id');
     }
 
     // protected static function newFactory(): MessageFactory

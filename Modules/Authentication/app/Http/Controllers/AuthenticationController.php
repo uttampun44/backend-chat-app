@@ -68,7 +68,7 @@ class AuthenticationController extends Controller
             $result = $this->repository->postRegister($data);
             return response()->json([
                 'status' => true,
-                'message' => 'Data stored successfully',
+                'message' => 'User Registeration successfully',
                 'data' => $result
             ], 200);
         } catch (\Throwable $th) {

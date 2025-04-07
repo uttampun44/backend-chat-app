@@ -16,12 +16,14 @@ class MessageSent
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $message;
+    public $receiver_id;
     /**
      * Create a new event instance.
      */
     public function __construct(Message $message)
     {
         $this->message = $message;
+        $this->receiver_id = $message->receiver_id;
     }
 
     /**
@@ -34,15 +36,15 @@ class MessageSent
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('App.Models.User.' . $this->message->user_id),
+            new PrivateChannel('App.Models.User.' . $this->message->receiver_id),
         ];
     }
 
-    public function broadCastWith()
+    public function broadcastWith()
     {
         return [
             'message' => $this->message->message,
-            'user_id' => $this->message->user_id,
+            'sender_id' => $this->message->sender_id,
             'created_at' => $this->message->created_at,
         ];
     }

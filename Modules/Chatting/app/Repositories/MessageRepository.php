@@ -17,9 +17,15 @@ class MessageRepository
 
    public function postMessage(array $data)
    {
+       if(!Auth::check())
+       {
+          throw new \Exception('You are not Authenticated');
+       }
+
       $messages =  Message::create([
            'message' => $data['message'],
-           'user_id' => Auth::user()->id,
+           'sender_id' => Auth::user()->id,
+           'receiver_id' => $data['receiver_id'],
        ]);
        broadcast( new MessageSent($messages))->toOthers();
        return $messages;
