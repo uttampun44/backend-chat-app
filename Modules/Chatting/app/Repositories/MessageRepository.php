@@ -27,6 +27,8 @@ class MessageRepository
            'sender_id' => Auth::user()->id,
            'receiver_id' => $data['receiver_id'],
        ]);
+       event(new MessageSent($messages));
+
        broadcast( new MessageSent($messages))->toOthers();
        return $messages;
    }

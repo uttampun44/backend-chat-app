@@ -11,7 +11,11 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array<string, array<int, string>>
      */
-    protected $listen = [];
+    protected $listen = [
+        \App\Events\MessageSent::class => [
+            \App\Listeners\SendNotification::class,
+        ]
+    ];
 
     /**
      * Indicates if events should be discovered.
