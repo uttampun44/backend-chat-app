@@ -11,7 +11,7 @@ class ChattingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    protected $imageRepository;
+    protected $messageRepository;
     public function __construct(MessageRepository $messageRepository)
     {
         $this->messageRepository = $messageRepository;
@@ -35,8 +35,8 @@ class ChattingController extends Controller
     public function store(Request $request) 
     {
        try {
-           $this->messageRepository->postMessage($request->all());
-           return response()->json(['message' => 'Message sent successfully'], 200);
+           $data = $this->messageRepository->postMessage($request->all());
+           return response()->json(['message' => 'Message sent successfully', 'data' => $data], 200);
        } catch (\Throwable $th) {
            return response()->json(['message' => $th->getMessage()], 500);
        }
