@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,7 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $auth_user = Auth::user();
+    $users = User::query()->where('id', '!=', $auth_user->id)->get();
+    return Inertia::render('Dashboard', [
+        'users' => $users
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -27,4 +34,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/chat/{id}', [ChatController::class, 'show'])->name('chat.show');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
