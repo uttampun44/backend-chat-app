@@ -20,7 +20,7 @@ class ChattingController extends Controller
     {
         $active_users = $this->messageRepository->getActiveUsers();
     
-       return Inertia::render('../')
+    //    return Inertia::render('../');
     }
 
 

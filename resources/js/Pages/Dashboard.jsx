@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-
+import User from '../Pages/Chat/User'
 export default function Dashboard() {
     return (
         <AuthenticatedLayout
@@ -20,6 +20,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
+                <User />
             </div>
         </AuthenticatedLayout>
     );

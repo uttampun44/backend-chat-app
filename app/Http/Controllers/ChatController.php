@@ -16,7 +16,7 @@ class ChatController extends Controller
         $users = $auth_user->users->where('id', '!=', $auth_user->id);
         return Inertia::render('Chat/User', [
             'users' => $users,
-        ])
+        ]);
     }
 
     public function show($id)

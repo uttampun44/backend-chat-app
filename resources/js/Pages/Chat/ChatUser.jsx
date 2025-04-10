@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Inertia } from '@inertiajs/inertia';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
 export default function ChatUser({ users, receiver }) {
     const [selectedUser, setSelectedUser] = useState(receiver);
@@ -42,7 +43,8 @@ export default function ChatUser({ users, receiver }) {
     };
 
     return (
-        <div className="flex h-screen">
+       <AuthenticatedLayout>
+         <div className="flex h-screen">
             {/* Sidebar with the list of users */}
             <div className="w-64 bg-gray-100 p-4 shadow-md">
                 <h2 className="text-xl font-semibold mb-4">Inbox</h2>
@@ -108,5 +110,6 @@ export default function ChatUser({ users, receiver }) {
                 </form>
             </div>
         </div>
+       </AuthenticatedLayout>
     );
 }
