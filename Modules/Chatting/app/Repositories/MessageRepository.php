@@ -9,7 +9,11 @@ use Modules\Chatting\Models\Message;
 class MessageRepository
 {
     public function handle() {}
-
+   
+    public function getActiveUsers()
+    {
+        return Auth::user();
+    }
     public function getMessages()
     {
        return Message::with('user')->get();

@@ -18,8 +18,11 @@ class ChattingController extends Controller
     }
     public function index()
     {
-        return view('chatting::index');
+        $active_users = $this->messageRepository->getActiveUsers();
+    
+       return Inertia::render('../')
     }
+
 
     /**
      * Show the form for creating a new resource.
