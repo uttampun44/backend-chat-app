@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Models\User;
 use Illuminate\Foundation\Application;
@@ -17,13 +18,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    $auth_user = Auth::user();
-    $users = User::query()->where('id', '!=', $auth_user->id)->get();
-    return Inertia::render('Dashboard', [
-        'users' => $users
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [MessageController::class, 'inbox'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/message/{user}', [MessageController::class, 'store'])->name('message.store')->middleware(['auth', 'verified']);
+Route::get('/message/{user}', [MessageController::class, 'show'])->name('message.show')->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
