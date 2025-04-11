@@ -34,10 +34,7 @@ class ChatController extends Controller
         }
 
         // Return the Chat page view with the receiver and the user's list of conversations
-        return Inertia::render('Chat/ChatUser', [
-            'users' => $auth_user->users,
-            'receiver' => $receiver, // Pass the receiver
-        ]);
+        return Inertia::render('Chat/ChatUser', ['users' => $auth_user]);
     }
 
     public function store(Request $request)
