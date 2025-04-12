@@ -21,6 +21,7 @@ export default function Dashboard({ users, auth }) {
     };
 
     const sendMessage = async () => {
+        console.log(selectedUserRef.current.id)
         await axios.post(`/message/${selectedUserRef.current.id}`, { message: messageInput });
         setMessageInput('')
         getMessages()
@@ -125,7 +126,7 @@ export default function Dashboard({ users, auth }) {
                                                     >
 
                                                         <div
-                                                            className={`${message.recipient_id == auth.user.id
+                                                            className={`${message.receiver_id == auth.user.id
                                                                 ? "bg-gray-200 text-gray-800"
                                                                 : "bg-blue-500 text-white"
                                                                 } p-3 rounded-lg max-w-xs`}

@@ -32,7 +32,7 @@ class MessageSent implements ShouldBroadcastNow
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel("message.{$this->message->recipient_id}"),
+            new PrivateChannel("message.{$this->message->receiver_id}"),
         ];
     }
 }
