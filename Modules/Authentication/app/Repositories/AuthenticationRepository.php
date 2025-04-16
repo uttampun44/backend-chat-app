@@ -43,8 +43,6 @@ class AuthenticationRepository
             throw new \Exception('You are not Authenticated');
         }
        $tokens = $user->tokens()->delete();
-       Auth::guard('web')->logout();
-
        return $tokens;
     }
 
