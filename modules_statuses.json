@@ -1,4 +1,5 @@
 {
     "Authentication": true,
-    "Chatting": true
+    "Chatting": true,
+    "UserProfileController": true
 }

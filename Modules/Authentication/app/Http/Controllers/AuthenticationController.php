@@ -4,6 +4,7 @@ namespace Modules\Authentication\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Modules\Authentication\app\Repositories\AuthenticationRepository;
 use Modules\Authentication\Http\Requests\LoginRequest;
 use Modules\Authentication\Http\Requests\SignupRequest;
@@ -34,7 +35,8 @@ class AuthenticationController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Login successfully',
-                'token' => $result
+                'token' => $result,
+                'user_id' => Auth::user()->id
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([

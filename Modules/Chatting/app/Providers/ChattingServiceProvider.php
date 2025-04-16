@@ -9,6 +9,7 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Modules\Chatting\Repositories\MessageRepository;
 
+
 class ChattingServiceProvider extends ServiceProvider
 {
     use PathNamespace;
