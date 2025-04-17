@@ -20,7 +20,9 @@ class UserInformationController extends Controller
      */
     public function index()
     {
-        $this->repository->userLists();
+       $users =  $this->repository->userLists();
+
+       return response()->json($users, 200);
     }
 
     /**

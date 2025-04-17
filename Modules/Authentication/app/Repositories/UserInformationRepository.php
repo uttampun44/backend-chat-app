@@ -12,12 +12,7 @@ class UserInformationRepository {
    
     public function userLists()
     {  
-         try {
-            $users = User::with('userInformations')->where('id', '!=', Auth::user()->id)->get();
-            return response()->json($users, 200);
-         } catch (\Throwable $th) {
-            return response()->json(['message' => $th->getMessage()], 500);
-         }
+         return User::with('userInformation')->take(6)->skip(4)->get();
     }
     public function userInformationCreateOrUpdate(array $data)
     {

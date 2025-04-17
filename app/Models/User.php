@@ -60,8 +60,8 @@ class User extends Authenticatable
         return Cache::has('user-is-online-' . $this->id);
     }
 
-    public function userInformations():HasOne
+    public function userInformation():HasOne
     {
-        return $this->hasOne(UserInformation::class);
+        return $this->hasOne(UserInformation::class, 'user_id', 'id');
     }
 }
