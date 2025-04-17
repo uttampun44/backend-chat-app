@@ -20,7 +20,7 @@ class UserInformationController extends Controller
      */
     public function index()
     {
-        return view('authentication::index');
+        $this->repository->userLists();
     }
 
     /**

@@ -4,10 +4,12 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\Authentication\Models\UserInformation;
 
 class User extends Authenticatable
 {
@@ -56,5 +58,10 @@ class User extends Authenticatable
     public function getIsOnlineAttribute()
     {
         return Cache::has('user-is-online-' . $this->id);
+    }
+
+    public function userInformations():HasOne
+    {
+        return $this->hasOne(UserInformation::class);
     }
 }

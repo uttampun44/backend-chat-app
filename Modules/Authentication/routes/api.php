@@ -18,6 +18,7 @@ Route::prefix('v1')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::post("/logout", [AuthenticationController::class, 'postLogout'])->name('auth.logout');
         Route::post('/update-user-information', [UserInformationController::class, 'store'])->name('auth.update-user-information');
+        Route::get('/user-information', [UserInformationController::class, 'index'])->name('auth.user-information');
     });
 });
 

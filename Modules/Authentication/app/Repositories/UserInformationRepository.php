@@ -2,13 +2,23 @@
 
 namespace Modules\Authentication\app\Repositories;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Modules\Authentication\Models\UserInformation;
 use Illuminate\Support\Str;
 
 class UserInformationRepository {
-
+   
+    public function userLists()
+    {  
+         try {
+            $users = User::with('userInformations')->where('id', '!=', Auth::user()->id)->get();
+            return response()->json($users, 200);
+         } catch (\Throwable $th) {
+            return response()->json(['message' => $th->getMessage()], 500);
+         }
+    }
     public function userInformationCreateOrUpdate(array $data)
     {
         $image_path = null;
