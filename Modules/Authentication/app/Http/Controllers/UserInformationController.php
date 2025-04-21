@@ -4,6 +4,7 @@ namespace Modules\Authentication\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Modules\Authentication\app\Repositories\UserInformationRepository;
 use Modules\Authentication\Http\Requests\UserInformationRequest;
 
@@ -44,6 +45,7 @@ class UserInformationController extends Controller
                 'status' => true,
             ], 200);
         } catch (\Throwable $th) {
+            Log::error($th->getMessage());
             return response()->json([
                 'status' => false,
                 'message' => $th->getMessage()
