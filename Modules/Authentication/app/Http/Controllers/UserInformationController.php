@@ -39,8 +39,10 @@ class UserInformationController extends Controller
      */
     public function store(UserInformationRequest $request)
     {
+      
         try {
-            $this->repository->userInformationCreateOrUpdate($request->validated());
+             $data = $request->validated();
+            $this->repository->userInformationCreateOrUpdate($data);
             return response()->json([
                 'status' => true,
             ], 200);

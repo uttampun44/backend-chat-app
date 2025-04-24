@@ -32,15 +32,13 @@ class AuthenticationController extends Controller
         try {
             $data = $request->validated();
             $result = $this->repository->postLogin($data);
-
-            $auth_user = Auth::user();
             // $users = $auth_user->users->where('id', '!=', $auth_user->id);
             return response()->json([
                 'status' => true,
                 'message' => 'Login successfully',
                 'token' => $result,
                 'user_id' => Auth::user()->id,
-                // 'login_users' => $users
+                'name' => Auth::user()->name,
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([

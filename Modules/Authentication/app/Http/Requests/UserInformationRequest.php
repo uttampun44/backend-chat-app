@@ -15,7 +15,6 @@ class UserInformationRequest extends FormRequest
             'gender' => 'required',
             'date_of_birth' => 'required',
             'address' => 'required',    
-            'image' => 'required',
         ];
     }
 
